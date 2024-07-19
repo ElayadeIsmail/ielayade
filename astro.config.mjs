@@ -12,7 +12,7 @@ export default defineConfig({
 	],
 	output: 'static',
 	adapter: vercel({
-		webAnalytics: true,
+		webAnalytics: { enabled: true },
 		imageService: true,
 	}),
 });
