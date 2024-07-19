@@ -1,0 +1,82 @@
+---
+import { navItems } from '../constants';
+---
+
+<div id='hamburger' class='lg:hidden block pointer mb-4 z-50'>
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		fill='none'
+		viewBox='0 0 24 24'
+		stroke-width='1.5'
+		stroke='currentColor'
+		id='hum_open'
+		class='size-9 block'>
+		<path
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12'></path>
+	</svg>
+
+	<svg
+		id='close'
+		xmlns='http://www.w3.org/2000/svg'
+		fill='none'
+		viewBox='0 0 24 24'
+		stroke-width='1.5'
+		stroke='currentColor'
+		class='size-9 hidden'>
+		<path
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			d='M6 18 18 6M6 6l12 12'></path>
+	</svg>
+</div>
+<aside
+	id='hum_nav'
+	class='lg:hidden z-20 fixed flex flex-col items-center justify-center inset-0 py-12 px-2 h-screen w-[min(75vw, 400px)] bg-background shadow-xl -translate-x-[100vw] invisible transition-all'>
+	<div class='flex-col flex space-y-3'>
+		{
+			Object.entries(navItems).map(([path, { name, options }]) => {
+				return (
+					<a
+						id='link'
+						href={path}
+						{...options}
+						class='transition-all hover:text-neutral-800 dark:hover:text-neutral-200'>
+						{name}
+					</a>
+				);
+			})
+		}
+	</div>
+</aside>
+<script>
+	const toggleOpen = () => {
+		const navElement = document.getElementById('hum_nav')!;
+		document.getElementById('hamburger')!.classList.toggle('open');
+		navElement.classList.toggle('expanded');
+		document.body.classList.toggle('overflow-hidden');
+		document.getElementById('content')?.classList.toggle('blur-md');
+	};
+	document.getElementById('hamburger')!.addEventListener('click', () => {
+		toggleOpen();
+	});
+	document.querySelectorAll('#link').forEach((element) =>
+		element.addEventListener('click', () => {
+			toggleOpen();
+		})
+	);
+</script>
+<style>
+	.expanded {
+		transform: translateY(0) !important;
+		visibility: visible !important;
+		width: min(75vw, 400px);
+	}
+	.open #hum_open {
+		display: none !important;
+	}
+	.open #close {
+		display: block !important;
+	}
+</style>

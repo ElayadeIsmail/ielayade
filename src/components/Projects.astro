@@ -15,14 +15,16 @@ const { data } = Astro.props;
 		{
 			data.map(({ body, data: { tech, image, title, link } }) => (
 				<a href={link} target='_blank' rel='noopener noreferrer'>
-					<Card title={title} body={body} tech={tech}>
+					<Card
+						title={title}
+						body={body}
+						tech={tech}
+						className='flex-col-reverse'>
 						<header class='z-10 min-w-[150px] mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 inline-block'>
 							<Image
 								src={image}
 								alt={title}
-								width={140}
-								height={200}
-								class='rounded'
+								class='rounded lg:w-[140px] w-full lg:h-[100px] h-[150px] mx-auto mt-3'
 							/>
 						</header>
 					</Card>
