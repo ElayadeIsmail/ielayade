@@ -2,26 +2,38 @@
 import '@fontsource/poppins';
 import { Header, Footer } from '../components';
 import '../styles/global.css';
-interface Props {
-	title: string;
-}
 
-const { title } = Astro.props;
+const seo = {
+	title: 'ELAYADE ISMAIL',
+	description:
+		'Elayade ismail is a Web developer specializing in building exceptional websites, applications, and everything in between.',
+	image: '/og.png',
+	url: 'www.elayade.dev',
+	twitterUsername: '@object__0bject',
+};
 ---
 
 <!doctype html>
 <html lang='en' class='dark scroll-smooth'>
 	<head>
 		<meta charset='UTF-8' />
-		<meta name='title' content='ELAYADE ISMAIL' />
-		<meta
-			name='description'
-			content='Elayade ismail is a Web developer specializing in building exceptional websites, applications, and everything in between.'
-		/>
+		<meta name='title' content={seo.title} />
+		<meta name='description' content={seo.description} />
 		<meta name='viewport' content='width=device-width' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='image' content='/og.png' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.ico' />
 		<meta name='generator' content={Astro.generator} />
-		<title>{title}</title>
+		<meta property='og:title' content={seo.title} />
+		<meta property='og:description' content={seo.description} />
+		<meta property='og:image' content={seo.image} />
+		<meta property='og:url' content={seo.url} />
+		<meta property='og:type' content='website' />
+		<meta name='twitter:card' content='summary_large_image' />
+		<meta name='twitter:creator' content={seo.twitterUsername} />
+		<meta name='twitter:title' content={seo.title} />
+		<meta name='twitter:description' content={seo.description} />
+		<meta name='twitter:image' content={seo.image} />
+		<title>{seo.title}</title>
 	</head>
 	<body class='antialiased max-w-xl mx-4 mt-8 lg:mx-auto'>
 		<main
