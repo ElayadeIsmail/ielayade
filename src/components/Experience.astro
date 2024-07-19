@@ -1,0 +1,28 @@
+---
+import Card from './Card.astro';
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+	data: CollectionEntry<'experience'>[];
+}
+
+const { data } = Astro.props;
+---
+
+<section id='experience'>
+	<h1 class='mb-8 text-2xl font-semibold tracking-tighter'>Experience</h1>
+	<ol class='group/list'>
+		{
+			data.map(
+				({ body, data: { startDate, endDate, tech, title, link } }) => (
+					<a href={link} target='_blank' rel='noopener noreferrer'>
+						<Card title={title} body={body} tech={tech}>
+							<header class='z-10 min-w-[150px] mb-2 mt-1 text-xs font-semibold uppercase tracking-wide dark:text-slate-300 text-slate-500 inline-block'>
+								{startDate} — {endDate}
+							</header>
+						</Card>
+					</a>
+				)
+			)
+		}
+	</ol>
+</section>
