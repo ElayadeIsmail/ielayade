@@ -2,7 +2,10 @@
 import { navItems } from '../constants';
 ---
 
-<div id='hamburger' class='lg:hidden block pointer mb-4 z-50'>
+<button
+	aria-label='hamburger menu'
+	id='hamburger'
+	class='lg:hidden block pointer mb-4 z-50'>
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
 		fill='none'
@@ -30,7 +33,7 @@ import { navItems } from '../constants';
 			stroke-linejoin='round'
 			d='M6 18 18 6M6 6l12 12'></path>
 	</svg>
-</div>
+</button>
 <aside
 	id='hum_nav'
 	class='lg:hidden z-20 fixed flex flex-col items-center justify-center inset-0 py-12 px-2 h-screen w-[min(75vw, 400px)] bg-background shadow-xl -translate-x-[100vw] invisible transition-all'>

@@ -14,13 +14,11 @@ const { data } = Astro.props;
 		{
 			data.map(
 				({ body, data: { startDate, endDate, tech, title, link } }) => (
-					<a href={link} target='_blank' rel='noopener noreferrer'>
-						<Card title={title} body={body} tech={tech}>
-							<header class='z-10 min-w-[150px] mb-2 mt-1 text-xs font-semibold uppercase tracking-wide dark:text-slate-300 text-slate-500 inline-block'>
-								{startDate} — {endDate}
-							</header>
-						</Card>
-					</a>
+					<Card title={title} body={body} tech={tech} link={link}>
+						<header class='z-10 min-w-[150px] mb-2 mt-1 text-xs font-semibold uppercase tracking-wide dark:text-slate-300 text-slate-500 inline-block'>
+							{startDate} — {endDate}
+						</header>
+					</Card>
 				)
 			)
 		}
