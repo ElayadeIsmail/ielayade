@@ -1,34 +1,35 @@
 ---
-import { Image } from 'astro:assets';
-import Card from './Card.astro';
-import type { CollectionEntry } from 'astro:content';
+import { Image } from "astro:assets";
+import Card from "./Card.astro";
+import type { CollectionEntry } from "astro:content";
 interface Props {
-	data: CollectionEntry<'projects'>[];
+    data: CollectionEntry<"projects">[];
 }
 
 const { data } = Astro.props;
 ---
 
-<section id='projects'>
-	<h2 class='mb-8 text-2xl font-semibold tracking-tighter'>Projects</h2>
-	<ol class='group/list'>
-		{
-			data.map(({ body, data: { tech, image, title, link } }) => (
-				<Card
-					title={title}
-					body={body}
-					tech={tech}
-					link={link}
-					className='flex-col-reverse'>
-					<header class='min-w-[150px] mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 inline-block'>
-						<Image
-							src={image}
-							alt={title}
-							class='object-contain lg:w-[140px] w-full lg:h-[100px] h-[150px] mx-auto mt-3'
-						/>
-					</header>
-				</Card>
-			))
-		}
-	</ol>
+<section id="projects">
+    <h2 class="py-8 text-2xl font-semibold tracking-tighter">Projects</h2>
+    <ol class="group/list">
+        {
+            data.map(({ body, data: { tech, image, title, link } }) => (
+                <Card
+                    title={title}
+                    body={body}
+                    tech={tech}
+                    link={link}
+                    className="flex-col-reverse"
+                >
+                    <header class="min-w-[150px] mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 inline-block">
+                        <Image
+                            src={image}
+                            alt={title}
+                            class="object-contain lg:w-[140px] w-full lg:h-[100px] h-[150px] mx-auto mt-3"
+                        />
+                    </header>
+                </Card>
+            ))
+        }
+    </ol>
 </section>
